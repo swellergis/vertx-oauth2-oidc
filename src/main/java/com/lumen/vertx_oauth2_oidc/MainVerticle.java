@@ -7,6 +7,7 @@ public class MainVerticle extends AbstractVerticle {
 
   @Override
   public void start(Promise<Void> startPromise) throws Exception {
+    int port = 8080;
     vertx.createHttpServer().requestHandler(req -> {
       req.response()
         .putHeader("content-type", "text/plain")
@@ -14,7 +15,7 @@ public class MainVerticle extends AbstractVerticle {
     }).listen(8080).onComplete(http -> {
       if (http.succeeded()) {
         startPromise.complete();
-        System.out.println("HTTP server started on port 8888");
+        System.out.println(String.format("HTTP server started on port %d", port));
       } else {
         startPromise.fail(http.cause());
       }
