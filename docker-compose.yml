@@ -10,6 +10,8 @@ services:
     environment:
       APP_BIND_ADDRESS: "0.0.0.0"
       APP_BIND_PORT: "8080"
+      GITHUB_CLIENT_ID: "Ov23liSdnEklYKoHeDL8"
+      GITHUB_CLIENT_SECRET: "4672159e67f6b8685a98ded0192ef39f1526b8ff"
       # KEYCLOAK_BASE_URL: "http://auth.local"
       KEYCLOAK_BASE_URL: "http://keycloak.local:3000/auth/"
       KEYCLOAK_REALM: "vertx"
