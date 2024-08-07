@@ -3,8 +3,8 @@ FROM bitnami/java:17-debian-11
 USER root
 RUN apt-get update
 
-ENV APP_DIR /application
-ENV APP_FILE container-uber-jar.jar
+ENV APP_DIR=/application
+ENV APP_FILE=container-uber-jar.jar
 
 WORKDIR $APP_DIR
 RUN chmod -R go+r $APP_DIR

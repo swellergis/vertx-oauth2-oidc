@@ -10,13 +10,15 @@ import io.vertx.ext.web.templ.handlebars.HandlebarsTemplateEngine;
 
 public class MainVerticle extends AbstractVerticle {
 
-  private static final String CLIENT_ID =
-    System.getenv("GITHUB_CLIENT_ID");
-  private static final String CLIENT_SECRET =
-    System.getenv("GITHUB_CLIENT_SECRET");
+  private String bindAddress;
+  private int bindPort;
+
+  private static final String CLIENT_ID = System.getenv("GITHUB_CLIENT_ID");
+  private static final String CLIENT_SECRET = System.getenv("GITHUB_CLIENT_SECRET");
 
   @Override
-  public void start(Promise<Void> startPromise) {
+  public void start(Promise<Void> startPromise) throws Exception {
+    readConfigProps();
 
     HandlebarsTemplateEngine engine =
       HandlebarsTemplateEngine.create(vertx);
@@ -52,11 +54,18 @@ public class MainVerticle extends AbstractVerticle {
 
     vertx.createHttpServer()
       .requestHandler(router)
-      .listen(Integer.getInteger("port", 8080))
+      .listen(bindPort, bindAddress)
       .onSuccess(server -> {
         System.out.println(
           "HTTP server started on port: " + server.actualPort());
         startPromise.complete();
       }).onFailure(startPromise::fail);
   }
+
+  private void readConfigProps() throws IllegalArgumentException, InterruptedException
+  {
+    bindAddress = "0.0.0.0";
+    bindPort = 8080;
+  }
+
 }

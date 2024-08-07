@@ -20,37 +20,47 @@ cd ${SCRIPT_PARENT}
 
 # make sure environemtn variables we require are set
 
-export APP_BIND_ADDRESS=0.0.0.0
+# export APP_BIND_ADDRESS=0.0.0.0
 
-if [ "${APP_BIND_PORT}z" == "z" ] ; then
-  echo "Missing environment variable APP_BIND_PORT"
+# if [ "${APP_BIND_PORT}z" == "z" ] ; then
+#   echo "Missing environment variable APP_BIND_PORT"
+#   exit 1
+# fi
+
+if [ "${GITHUB_CLIENT_ID}z" == "z" ] ; then
+  echo "Missing environment variable GITHUB_CLIENT_ID"
   exit 1
 fi
 
-if [ "${KEYCLOAK_BASE_URL}z" == "z" ] ; then
-  echo "Missing environment variable KEYCLOAK_BASE_URL"
+if [ "${GITHUB_CLIENT_SECRET}z" == "z" ] ; then
+  echo "Missing environment variable GITHUB_CLIENT_SECRET"
   exit 1
 fi
 
-if [ "${KEYCLOAK_REALM}z" == "z" ] ; then
-  echo "Missing environment variable KEYCLOAK_REALM"
-  exit 1
-fi
+# if [ "${KEYCLOAK_BASE_URL}z" == "z" ] ; then
+#   echo "Missing environment variable KEYCLOAK_BASE_URL"
+#   exit 1
+# fi
 
-if [ "${KEYCLOAK_CLIENT_ID}z" == "z" ] ; then
-  echo "Missing environment variable KEYCLOAK_CLIENT_ID"
-  exit 1
-fi
+# if [ "${KEYCLOAK_REALM}z" == "z" ] ; then
+#   echo "Missing environment variable KEYCLOAK_REALM"
+#   exit 1
+# fi
 
-if [ "${LOGI_BACKEND_HOST}z" == "z" ] ; then
-  echo "Missing environment variable LOGI_BACKEND_HOST"
-  exit 1
-fi
+# if [ "${KEYCLOAK_CLIENT_ID}z" == "z" ] ; then
+#   echo "Missing environment variable KEYCLOAK_CLIENT_ID"
+#   exit 1
+# fi
 
-if [ "${LOGI_BACKEND_PORT}z" == "z" ] ; then
-  echo "Missing environment variable LOGI_BACKEND_PORT"
-  exit 1
-fi
+# if [ "${LOGI_BACKEND_HOST}z" == "z" ] ; then
+#   echo "Missing environment variable LOGI_BACKEND_HOST"
+#   exit 1
+# fi
+
+# if [ "${LOGI_BACKEND_PORT}z" == "z" ] ; then
+#   echo "Missing environment variable LOGI_BACKEND_PORT"
+#   exit 1
+# fi
 
 # determine if we are running in the context of minikube specifically
 # and if so we'll try to load ingress public cert into

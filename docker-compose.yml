@@ -1,27 +1,13 @@
 services:
 
   vertx:
-    container_name: vertx
+    container_name: vertx-oauth2
     image: vertx-oauth2-oidc:dev
     #restart: unless-stopped
     # map an outer port to the inner port 8081 our application is listening on
     ports:
+      # - 8080:8081
       - 8080:8080
     environment:
-      APP_BIND_ADDRESS: "0.0.0.0"
-      APP_BIND_PORT: "8080"
-      GITHUB_CLIENT_ID: "Ov23liSdnEklYKoHeDL8"
-      GITHUB_CLIENT_SECRET: "4672159e67f6b8685a98ded0192ef39f1526b8ff"
-      # KEYCLOAK_BASE_URL: "http://auth.local"
-      KEYCLOAK_BASE_URL: "http://keycloak.local:3000/auth/"
-      KEYCLOAK_REALM: "vertx"
-      KEYCLOAK_CLIENT_ID: "vertx-service"
-      KEYCLOAK_CLIENT_SECRET: "ecb85cc5-f90d-4a03-8fac-24dcde57f40c"
-      # LOGI_BACKEND_HOST: "atarcdb3.postgres.database.azure.com"
-      # LOGI_BACKEND_HOST: "192.168.57.35"
-      LOGI_BACKEND_HOST: "pg"
-      LOGI_BACKEND_PORT: "8080"
-      # enforcing or permissive
-      MIDDLEWARE_ENFORCEMENT_MODE: "enforcing"
-    # volumes:
-    #   - /home/toor/Downloads/DigiCertGlobalRootCA.crt.pem:/application/DigiCertGlobalRootCA.crt.pem:ro
+      - GITHUB_CLIENT_ID=Ov23liSdnEklYKoHeDL8
+      - GITHUB_CLIENT_SECRET=changeme
