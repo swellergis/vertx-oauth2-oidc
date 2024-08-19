@@ -21,7 +21,8 @@
 
     <!-- <main.verticle>com.lumen.vertx_oauth2_oidc.MainVerticle</main.verticle> -->
     <!-- <main.verticle>com.lumen.vertx_oauth2_oidc.ProtectedProfileVerticle</main.verticle> -->
-    <main.verticle>com.lumen.vertx_oauth2_oidc.MainPersistentVerticle</main.verticle>
+    <!-- <main.verticle>com.lumen.vertx_oauth2_oidc.MainPersistentVerticle</main.verticle> -->
+    <main.verticle>com.lumen.vertx_oauth2_oidc.KeycloakDiscoverVerticle</main.verticle>
     <launcher.class>io.vertx.core.Launcher</launcher.class>
   </properties>
 

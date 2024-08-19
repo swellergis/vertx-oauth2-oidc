@@ -27,13 +27,23 @@ cd ${SCRIPT_PARENT}
 #   exit 1
 # fi
 
-if [ "${GITHUB_CLIENT_ID}z" == "z" ] ; then
-  echo "Missing environment variable GITHUB_CLIENT_ID"
+if [ "${KEYCLOAK_BASE_URL}z" == "z" ] ; then
+  echo "Missing environment variable KEYCLOAK_BASE_URL"
   exit 1
 fi
 
-if [ "${GITHUB_CLIENT_SECRET}z" == "z" ] ; then
-  echo "Missing environment variable GITHUB_CLIENT_SECRET"
+if [ "${KEYCLOAK_REALM}z" == "z" ] ; then
+  echo "Missing environment variable KEYCLOAK_REALM"
+  exit 1
+fi
+
+if [ "${KEYCLOAK_CLIENT_ID}z" == "z" ] ; then
+  echo "Missing environment variable KEYCLOAK_CLIENT_ID"
+  exit 1
+fi
+
+if [ "${KEYCLOAK_CLIENT_SECRET}z" == "z" ] ; then
+  echo "Missing environment variable KEYCLOAK_CLIENT_SECRET"
   exit 1
 fi
 
