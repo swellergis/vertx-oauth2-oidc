@@ -9,7 +9,6 @@ import io.vertx.core.Promise;
 import io.vertx.core.http.HttpServerOptions;
 import io.vertx.ext.auth.oauth2.OAuth2Auth;
 import io.vertx.ext.auth.oauth2.OAuth2Options;
-import io.vertx.ext.auth.oauth2.providers.KeycloakAuth;
 import io.vertx.ext.auth.oauth2.providers.OpenIDConnectAuth;
 import io.vertx.ext.web.Router;
 
@@ -57,7 +56,6 @@ public class KeycloakDiscoverVerticle extends AbstractVerticle
 
     private Router initRoutes()
     {
-
         // set up keycloak authentication
         final Future<OAuth2Auth> oa2 = OpenIDConnectAuth.discover(
                 vertx,
@@ -78,15 +76,22 @@ public class KeycloakDiscoverVerticle extends AbstractVerticle
                     LOG.warning(String.format("Initialization of OAuth2 failed: %s", err.getMessage()));
                 });
 
+        Router router = Router.router(vertx);
 
-      Router router = Router.router(vertx);
-      return router;
+        // health check
+        router.get("/")
+            .handler(ctx -> {
+                ctx.response()
+                .end("howdy!");
+            });
+
+        return router;
     }
 
     private void readConfigProps() throws IllegalArgumentException, InterruptedException
     {
       bindAddress = "0.0.0.0";
-      bindPort = 8080;
+      bindPort = 8081;
     }
   
 }

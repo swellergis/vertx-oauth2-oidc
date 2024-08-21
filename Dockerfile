@@ -1,4 +1,4 @@
-FROM bitnami/java:17-debian-11
+FROM bitnami/java:17-debian-12
 
 USER root
 RUN apt-get update
